@@ -6,25 +6,33 @@ import Contact from "./routes/Contact.tsx";
 import ErrorPage from "./routes/Error.tsx";
 
 import "./App.scss";
+import Root from "./root.tsx";
 import Home from "./routes/Home.tsx";
+import About from "./routes/About.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/About",
-    element: <Projects />,
-  },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/About",
+        element: <About />,
+      },
+      {
+        path: "/projects",
+        element: <Projects />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
   },
 ]);
 
