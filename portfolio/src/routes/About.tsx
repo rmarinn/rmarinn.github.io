@@ -1,13 +1,25 @@
 import Container from "react-bootstrap/Container";
-import ListGroup from "react-bootstrap/ListGroup";
+import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
+import { useLocation } from "react-router-dom";
+import { motion as m } from "framer-motion";
 
 const About = () => {
+  const location = useLocation();
+
   return (
-    <Card body as={Container} fluid>
-      <ListGroup variant="flush">
-        <ListGroup.Item>
+    <Container
+      className="d-flex align-items-center h-100"
+      as={m.div}
+      key={location.pathname}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+    >
+      <Container id={location.pathname}>
+        <Stack as={Card} id="title-card" className="p-2">
           <h1>About me</h1>
           <p>
             Hello! I'm Richard A. Marin, a Physics graduate from Mapúa
@@ -29,8 +41,8 @@ const About = () => {
             to discover and innovate. I am excited to continue this journey of
             discovery.
           </p>
-        </ListGroup.Item>
-        <ListGroup.Item>
+          <hr />
+
           <h1>Experience</h1>
           <ul>
             <li>
@@ -47,16 +59,16 @@ const About = () => {
               Developed a mobile app using the Flutter framework
             </li>
           </ul>
-        </ListGroup.Item>
-        <ListGroup.Item>
+          <hr />
+
           <h1>Skills</h1>
           <ul>
             <li>Python</li>
             <li>React</li>
             <li>Research</li>
           </ul>
-        </ListGroup.Item>
-        <ListGroup.Item>
+          <hr />
+
           <Nav>
             <Nav.Item>
               <Nav.Link href="https://github.com/rmarinn">Github</Nav.Link>
@@ -65,9 +77,9 @@ const About = () => {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-        </ListGroup.Item>
-      </ListGroup>
-    </Card>
+        </Stack>
+      </Container>
+    </Container>
   );
 };
 

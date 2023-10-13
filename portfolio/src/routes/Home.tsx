@@ -5,37 +5,52 @@ import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Flowfield from "../components/Flowfield";
+import { motion as m, AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
+
 import "../assets/scss/home.scss";
 
 const Home = () => {
+  const location = useLocation();
+
   return (
-    <>
-      <Flowfield id="flow-field" />
-      <Container className="d-flex align-items-center h-100">
-        <Row className="text-center justify-content-center mx-0" as={Container}>
-          <Col xs={4}>
-            <Stack as={Card} id="title-card" className="pt-2">
-              <h1>Richard Marin</h1>
-              <p className="d-none d-md-block">
-                Data Analytics • Programming • Research
-              </p>
-              <Nav className="justify-content-center">
-                <Nav.Link as={RouterLink} to="/about">
-                  about
-                </Nav.Link>
-                <Nav.Link as={RouterLink} to="/projects">
-                  projects
-                </Nav.Link>
-                <Nav.Link as={RouterLink} to="/contact">
-                  contact
-                </Nav.Link>
-              </Nav>
-            </Stack>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <AnimatePresence>
+      <m.div
+        className="d-flex align-items-center h-100"
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+      >
+        <Container>
+          <Row
+            className="text-center justify-content-center mx-0"
+            as={Container}
+          >
+            <Col xs={4}>
+              <Stack as={Card} id="title-card" className="pt-2">
+                <h1>Richard Marin</h1>
+                <p className="d-none d-md-block">
+                  Data Analytics • Programming • Research
+                </p>
+                <Nav className="justify-content-center">
+                  <Nav.Link as={RouterLink} to="/about">
+                    about
+                  </Nav.Link>
+                  <Nav.Link as={RouterLink} to="/projects">
+                    projects
+                  </Nav.Link>
+                  <Nav.Link as={RouterLink} to="/contact">
+                    contact
+                  </Nav.Link>
+                </Nav>
+              </Stack>
+            </Col>
+          </Row>
+        </Container>
+      </m.div>
+    </AnimatePresence>
   );
 };
 
