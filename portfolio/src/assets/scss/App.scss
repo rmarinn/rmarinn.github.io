@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    color: white;
 }
 
 #root {
@@ -50,4 +51,16 @@ p, a{
     border-color: white;
     border-width: 3px;
     padding: 10px;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.bg-blue {
+    background-color: blue;
+}
+
+.bg-yellow {
+    background-color: yellow;
 }

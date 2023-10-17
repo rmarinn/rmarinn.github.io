@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import p5 from "p5";
+import { useLocation } from "react-router-dom";
 
 type SketchProps = {
   width?: number;
@@ -8,7 +9,6 @@ type SketchProps = {
   spacing?: number; // spacing between vectors
   min_line_len?: number;
   max_line_len?: number;
-  speed?: number;
   min_alpha?: number;
   max_alpha?: number;
   id?: string | undefined;
@@ -19,16 +19,61 @@ const Flowfield = ({
   spacing = 20,
   min_line_len = 0.3,
   max_line_len = 0.8,
-  speed = 0.002,
-  min_alpha = 100,
-  max_alpha = 255,
+  min_alpha = 0.5,
+  max_alpha = 1,
   id = undefined,
 }: SketchProps) => {
+  const location = useLocation();
   const canvasRef = useRef<HTMLDivElement | null>(null);
   const p5Canvas = useRef<p5 | null>(null);
+  const [hueOffset, setHueOffset] = useState(0.0);
+  const [zOffset, setZOffset] = useState(0.0);
+
   var n_cols = Math.floor(window.innerWidth / spacing);
   var n_rows = Math.floor(window.innerHeight / spacing);
-  var zoff = 0;
+
+  useEffect(() => {
+    setHueOffset(hueOffset + 0.1);
+    setZOffset(zOffset + 10);
+
+    if (p5Canvas.current != null) {
+      let p = p5Canvas.current;
+      p.draw = () => {
+        p5Canvas.current!.background(0);
+        var yoff = 0;
+        for (let x = 0; x <= n_cols; x++) {
+          var xoff = 0;
+          for (let y = 0; y <= n_rows; y++) {
+            let r = p.noise(xoff, yoff, zOffset);
+            let angle = r * p.TWO_PI;
+            let vec = p5.Vector.fromAngle(angle);
+            let xpos = x * spacing + spacing / 2;
+            let ypos = y * spacing + spacing / 2;
+            let line_length =
+              spacing * (r * (max_line_len - min_line_len) + min_line_len);
+
+            let hue = (0.8 + hueOffset) % 1;
+            let saturation = 1;
+            let brightness = r * (max_alpha - min_alpha) + min_alpha;
+            let alpha = r * (max_alpha - min_alpha) + min_alpha;
+            p.stroke(hue, saturation, brightness, alpha);
+            p.push();
+            p.translate(xpos, ypos);
+            p.rotate(vec.heading());
+            p.line(0, 0, line_length, 0);
+            p.pop();
+
+            xoff += dt;
+          }
+          yoff += dt;
+        }
+
+        // setZOffset(zOffset + speed);
+      };
+
+      p.redraw();
+    }
+  }, [location]);
 
   // define the methods used for making the flow field canvas
   const sketch = (p: p5) => {
@@ -36,6 +81,8 @@ const Flowfield = ({
       p.createCanvas(window.innerWidth, window.innerHeight).parent(
         canvasRef.current!
       );
+      p.colorMode(p.HSB, 1.0);
+      p.noLoop();
     };
 
     p.draw = () => {
@@ -44,16 +91,19 @@ const Flowfield = ({
       for (let x = 0; x <= n_cols; x++) {
         var xoff = 0;
         for (let y = 0; y <= n_rows; y++) {
-          let r = p.noise(xoff, yoff, zoff);
+          let r = p.noise(xoff, yoff, zOffset);
           let angle = r * p.TWO_PI;
           let vec = p5.Vector.fromAngle(angle);
           let xpos = x * spacing + spacing / 2;
           let ypos = y * spacing + spacing / 2;
-          let stroke_alpha = r * (max_alpha - min_alpha) + min_alpha;
           let line_length =
             spacing * (r * (max_line_len - min_line_len) + min_line_len);
 
-          p.stroke(200, r * 155, 255, stroke_alpha);
+          let hue = (0.8 + hueOffset) % 1;
+          let saturation = 1;
+          let brightness = r * (max_alpha - min_alpha) + min_alpha;
+          let alpha = r * (max_alpha - min_alpha) + min_alpha;
+          p.stroke(hue, saturation, brightness, alpha);
           p.push();
           p.translate(xpos, ypos);
           p.rotate(vec.heading());
@@ -65,7 +115,7 @@ const Flowfield = ({
         yoff += dt;
       }
 
-      zoff += speed;
+      // setZOffset(zOffset + speed);
     };
   };
 
