@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import ProjectCard from "../components/ProjectCard";
 import ProjectPage from "../components/ProjectPage";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Iris_Classifier_Proj = () => {
   return (
@@ -31,6 +33,7 @@ const Projects = () => {
           <Col>
             <Nav.Link as={NavLink} to="/" className="text-end">
               back to home
+              <FontAwesomeIcon icon={faHouse} className="ms-2" />
             </Nav.Link>
           </Col>
         </Row>

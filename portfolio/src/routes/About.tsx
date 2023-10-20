@@ -2,8 +2,11 @@ import Container from "react-bootstrap/Container";
 import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import { motion as m } from "framer-motion";
+import { faAddressBook } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 const About = () => {
   const location = useLocation();
@@ -63,17 +66,57 @@ const About = () => {
 
           <h1>Skills</h1>
           <ul>
-            <li>Python</li>
-            <li>React</li>
-            <li>Research</li>
+            <li>
+              <b>Python: </b>
+              <small>
+                Pandas, Matplotlib, Numpy, Scikit-learn, Keras, Scipy, etc.
+              </small>
+            </li>
+            <li>
+              <b>Data Science and Machine Learning: </b>
+              <small>
+                <Nav.Link as={NavLink} to="/projects" className="d-inline">
+                  view projects
+                </Nav.Link>
+              </small>
+            </li>
+            <li>
+              <b>Web Development: </b>
+              <small>React, Typescript, Bootstrap</small>
+            </li>
+            <li>
+              <b>Research: </b>
+              <small>
+                <Nav.Link
+                  href="https://proceedings.spp-online.org/article/view/SPP-2023-2H-03"
+                  className="d-inline"
+                >
+                  Quantum DNA sequencing using Gaussian amplitude amplification
+                </Nav.Link>
+              </small>
+            </li>
           </ul>
+
+          <i>Other skills:</i>
+          <p>
+            Cloud Services (AWS S3, AWS EC2); Mobile development (Android
+            Studio, Flutter); Web Frameworks (PHP, Laravel, XAMPP Stack, Flask);
+            other languages: R, C#, JavaScript, Dart
+          </p>
+
           <hr />
 
-          <Nav>
+          <Nav className="justify-content-center">
             <Nav.Item>
-              <Nav.Link href="https://github.com/rmarinn">Github</Nav.Link>
-              <Nav.Link href="https://www.linkedin.com/in/richard-marin-00495327b">
-                LinkedIn
+              <Nav.Link as={NavLink} to="/contact">
+                Contact
+                <FontAwesomeIcon icon={faAddressBook} className="ms-2" />
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link as={NavLink} to="/">
+                Home
+                <FontAwesomeIcon icon={faHouse} className="ms-2" />
               </Nav.Link>
             </Nav.Item>
           </Nav>
