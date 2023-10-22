@@ -28,12 +28,10 @@ const Home = () => {
             className="text-center justify-content-center mx-0"
             as={Container}
           >
-            <Col xs={4}>
+            <Col md={4}>
               <Stack as={Card} id="title-card" className="pt-2">
                 <h1>Richard Marin</h1>
-                <p className="d-none d-md-block">
-                  Data Analytics • Programming • Research
-                </p>
+                <p>Data Analytics • Programming • Research</p>
                 <Nav className="justify-content-center">
                   <Nav.Link as={RouterLink} to="/about">
                     about

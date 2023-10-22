@@ -25,7 +25,7 @@ const Projects = () => {
       exit={{ opacity: 0, x: 100 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
     >
-      <Container className="p-3">
+      <Container className="p-4" fluid>
         <Row>
           <Col>
             <h1 className="pb-3">featured projects</h1>
@@ -37,7 +37,7 @@ const Projects = () => {
             </Nav.Link>
           </Col>
         </Row>
-        <Row as={Container}>
+        <Row as={Container} className="justify-content-between" fluid>
           <ProjectCard
             title="Iris Classifier Model"
             description="A classifier model that classifies Iris species from the Iris dataset with an accuracy of 0.96±0.03."

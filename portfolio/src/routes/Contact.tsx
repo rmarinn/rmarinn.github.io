@@ -23,7 +23,7 @@ const Contact = () => {
     >
       <Container>
         <Row className="text-center justify-content-center mx-0" as={Container}>
-          <Col xs={6}>
+          <Col md={6}>
             <Card>
               <Col>
                 <h1>/contact</h1>

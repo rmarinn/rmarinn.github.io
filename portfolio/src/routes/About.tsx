@@ -13,7 +13,7 @@ const About = () => {
 
   return (
     <Container
-      className="d-flex align-items-center h-100"
+      className="d-flex align-items-center py-3"
       as={m.div}
       key={location.pathname}
       initial={{ opacity: 0 }}
@@ -64,7 +64,7 @@ const About = () => {
           </ul>
           <hr />
 
-          <h1>Skills</h1>
+          <h1>Main Skills</h1>
           <ul>
             <li>
               <b>Python: </b>
@@ -98,11 +98,20 @@ const About = () => {
           </ul>
 
           <i>Other skills:</i>
-          <p>
-            Cloud Services (AWS S3, AWS EC2); Mobile development (Android
-            Studio, Flutter); Web Frameworks (PHP, Laravel, XAMPP Stack, Flask);
-            other languages: R, C#, JavaScript, Dart
-          </p>
+          <ul>
+            <li>
+              <b>Cloud Services:</b> AWS S3, AWS EC2
+            </li>
+            <li>
+              <b>Mobile development:</b> Android Studio, Flutter
+            </li>
+            <li>
+              <b>Web Frameworks:</b> PHP, Laravel, XAMPP Stack, Flask
+            </li>
+            <li>
+              <b>other languages:</b> R, C#, JavaScript, Dart
+            </li>
+          </ul>
 
           <hr />
 

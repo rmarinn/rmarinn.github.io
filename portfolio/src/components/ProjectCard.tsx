@@ -24,8 +24,8 @@ const ProjectCard = ({
   github_link,
 }: ProjectCardProps) => {
   return (
-    <Col xs={4}>
-      <Card className="text-start">
+    <Col md={4} sm={6}>
+      <Card className="text-start mb-3">
         <Card.Title>{title}</Card.Title>
         <Card.Body>{description}</Card.Body>
         <Card.Footer>

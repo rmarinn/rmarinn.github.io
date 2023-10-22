@@ -17,15 +17,16 @@ const ProjectPage = ({ title, src }: ProjectPageProps) => {
 
   return (
     <Container
-      className="h-100 p-3 d-flex"
+      className="p-3 h-100"
       as={m.div}
       key={location.pathname}
       initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
+      fluid
     >
-      <Card className="h-100 flex-fill d-flex">
+      <Card className="w-100 h-100 flex-fill d-flex">
         <Row>
           <Col>
             <h1>{title}</h1>
