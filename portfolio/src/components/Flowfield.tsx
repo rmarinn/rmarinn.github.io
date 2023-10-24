@@ -1,151 +1,190 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import p5 from "p5";
-import { useLocation } from "react-router-dom";
 
-type SketchProps = {
-  width?: number;
-  height?: number;
-  dt?: number; // difference between neighboring vectors
-  spacing?: number; // spacing between vectors
-  min_line_len?: number;
-  max_line_len?: number;
-  min_alpha?: number;
-  max_alpha?: number;
-  id?: string | undefined;
-};
+// const colors = ["#8E2CEA", "#60EB2D", "#E4EB2D"];
+const colors = ["#E4EB2D", "#60EB2D", "#8E2CEA"];
+const strokeWeights = [5, 3.5, 2];
 
-const Flowfield = ({
-  dt = 0.12,
-  spacing = 20,
-  min_line_len = 0.3,
-  max_line_len = 0.8,
-  min_alpha = 0.5,
-  max_alpha = 1,
-  id = undefined,
-}: SketchProps) => {
-  const location = useLocation();
-  const canvasRef = useRef<HTMLDivElement | null>(null);
-  const p5Canvas = useRef<p5 | null>(null);
-  const [hueOffset, setHueOffset] = useState(0.0);
-  const [zOffset, setZOffset] = useState(0.0);
+class Particle {
+  effect: Effect;
+  x: number;
+  y: number;
+  history: [{ x: number; y: number }];
+  maxLength: number;
+  speedModifier: number;
+  timer: number;
 
-  var n_cols = Math.floor(window.innerWidth / spacing);
-  var n_rows = Math.floor(window.innerHeight / spacing);
+  constructor(effect: Effect) {
+    this.effect = effect;
+    this.x = Math.floor(Math.random() * this.effect.width);
+    this.y = Math.floor(Math.random() * this.effect.height);
+    this.speedModifier = Math.ceil(Math.random() * 3);
+    this.history = [{ x: this.x, y: this.y }];
+    this.maxLength = Math.floor(Math.random() * 100 + 10 * this.speedModifier);
+    this.timer = this.maxLength * 0.5;
+  }
 
-  useEffect(() => {
-    setHueOffset(hueOffset + 0.1);
-    setZOffset(zOffset + 10);
-
-    if (p5Canvas.current != null) {
-      let p = p5Canvas.current;
-      p.draw = () => {
-        p5Canvas.current!.background(0);
-        var yoff = 0;
-        for (let x = 0; x <= n_cols; x++) {
-          var xoff = 0;
-          for (let y = 0; y <= n_rows; y++) {
-            let r = p.noise(xoff, yoff, zOffset);
-            let angle = r * p.TWO_PI;
-            let vec = p5.Vector.fromAngle(angle);
-            let xpos = x * spacing + spacing / 2;
-            let ypos = y * spacing + spacing / 2;
-            let line_length =
-              spacing * (r * (max_line_len - min_line_len) + min_line_len);
-
-            let hue = (0.8 + hueOffset) % 1;
-            let saturation = 1;
-            let brightness = r * (max_alpha - min_alpha) + min_alpha;
-            let alpha = r * (max_alpha - min_alpha) + min_alpha;
-            p.stroke(hue, saturation, brightness, alpha);
-            p.push();
-            p.translate(xpos, ypos);
-            p.rotate(vec.heading());
-            p.line(0, 0, line_length, 0);
-            p.pop();
-
-            xoff += dt;
-          }
-          yoff += dt;
-        }
-
-        // setZOffset(zOffset + speed);
-      };
-
-      p.redraw();
-    }
-  }, [location]);
-
-  // define the methods used for making the flow field canvas
-  const sketch = (p: p5) => {
-    p.setup = () => {
-      p.createCanvas(window.innerWidth, window.innerHeight).parent(
-        canvasRef.current!
-      );
-      p.colorMode(p.HSB, 1.0);
-      p.noLoop();
-    };
-
-    p.draw = () => {
-      p.background(0);
-      var yoff = 0;
-      for (let x = 0; x <= n_cols; x++) {
-        var xoff = 0;
-        for (let y = 0; y <= n_rows; y++) {
-          let r = p.noise(xoff, yoff, zOffset);
-          let angle = r * p.TWO_PI;
-          let vec = p5.Vector.fromAngle(angle);
-          let xpos = x * spacing + spacing / 2;
-          let ypos = y * spacing + spacing / 2;
-          let line_length =
-            spacing * (r * (max_line_len - min_line_len) + min_line_len);
-
-          let hue = (0.8 + hueOffset) % 1;
-          let saturation = 1;
-          let brightness = r * (max_alpha - min_alpha) + min_alpha;
-          let alpha = r * (max_alpha - min_alpha) + min_alpha;
-          p.stroke(hue, saturation, brightness, alpha);
-          p.push();
-          p.translate(xpos, ypos);
-          p.rotate(vec.heading());
-          p.line(0, 0, line_length, 0);
-          p.pop();
-
-          xoff += dt;
-        }
-        yoff += dt;
+  public draw(p: p5) {
+    p.stroke(colors[this.speedModifier - 1]);
+    p.strokeWeight(strokeWeights[this.speedModifier - 1]);
+    // draw trail
+    if (this.history.length > 1) {
+      for (let i = 0; i < this.history.length - 1; i++) {
+        p.line(
+          this.history[i].x,
+          this.history[i].y,
+          this.history[i + 1].x,
+          this.history[i + 1].y
+        );
       }
+    }
+  }
 
-      // setZOffset(zOffset + speed);
-    };
-  };
+  public update() {
+    if (this.timer >= 1) {
+      // handle particle movement before it expires
+      let col = Math.floor(this.x / this.effect.cellSize) - 1;
+      let row = Math.floor(this.y / this.effect.cellSize) - 1;
+      let index = row * this.effect.cols + col;
+      let angle = this.effect.flowField[index];
 
-  const handleResize = () => {
-    n_cols = Math.floor(window.innerWidth / spacing);
-    n_rows = Math.floor(window.innerHeight / spacing);
-    p5Canvas.current?.resizeCanvas(window.innerWidth, window.innerHeight);
-  };
+      this.x += Math.cos(angle) * this.speedModifier * this.effect.deltaTime;
+      this.y += Math.sin(angle) * this.speedModifier * this.effect.deltaTime;
 
-  // hook for setup and cleanup of the canvas
+      if (this.history.length > this.maxLength) {
+        this.history.shift();
+      }
+      this.history.push({ x: this.x, y: this.y });
+    } else if (this.history.length > 1) {
+      // deleting the trail after the particle expires
+      this.history.shift();
+    } else {
+      // reset the particle after it finally expires
+      this.reset();
+    }
+    this.timer--;
+  }
+
+  public reset() {
+    this.x = Math.floor(Math.random() * this.effect.width);
+    this.y = Math.floor(Math.random() * this.effect.height);
+    this.history = [{ x: this.x, y: this.y }];
+    this.timer = this.maxLength;
+  }
+}
+
+class Effect {
+  width: number;
+  height: number;
+  particles: Particle[];
+  numberOfParticles: number = 150;
+  cellSize: number = 10;
+  rows: number;
+  cols: number;
+  flowField: number[];
+  curve: number = 5;
+  zoom: number = 0.01;
+  debug: boolean;
+  deltaTime: number;
+
+  constructor(width: number, height: number, debug: boolean = false) {
+    this.width = width;
+    this.height = height;
+    this.particles = [];
+    this.rows = 0;
+    this.cols = 0;
+    this.flowField = [];
+    this.debug = debug;
+    this.deltaTime = 0;
+    this.init();
+  }
+
+  private initFlowField() {
+    this.rows = Math.ceil(this.height / this.cellSize);
+    this.cols = Math.ceil(this.width / this.cellSize);
+    this.flowField = [];
+    for (let y = 0; y < this.rows; y++) {
+      for (let x = 0; x < this.cols; x++) {
+        let angle =
+          (Math.cos(x * this.zoom) + Math.sin(y * this.zoom)) * this.curve;
+        this.flowField.push(angle);
+      }
+    }
+    console.log(`${this.rows}, ${this.cols}, ${this.flowField.length}`);
+  }
+
+  private initParticles() {
+    this.particles = [];
+    for (let i = 0; i < this.numberOfParticles; i++) {
+      this.particles.push(new Particle(this));
+    }
+  }
+
+  public init() {
+    this.initFlowField();
+    this.initParticles();
+  }
+
+  public render(p: p5) {
+    const frameStartTime = p.millis();
+    p.background(0);
+    if (this.debug) this.drawGrid(p);
+    this.particles.forEach((particle: Particle) => {
+      particle.update();
+      particle.draw(p);
+    });
+    this.deltaTime = p.millis() - frameStartTime;
+  }
+
+  public drawGrid(p: p5) {
+    p.stroke(155);
+    for (let c = 0; c <= this.cols; c++) {
+      let xpos = this.cellSize * c;
+      p.line(xpos, 0, xpos, this.height);
+    }
+    for (let r = 0; r <= this.rows; r++) {
+      let ypos = this.cellSize * r;
+      p.line(0, ypos, this.width, ypos);
+    }
+  }
+
+  public resize() {
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    // this.p.resizeCanvas(this.width, this.height);
+    // this.initFlowField();
+    console.log();
+  }
+}
+
+const Flowfield = ({ id }: { id: string }) => {
+  const canvasRef = useRef<HTMLDivElement | null>(null);
+  const effectRef = useRef<Effect | null>(null);
+  const p5Canvas = useRef<p5 | null>(null);
+
   useEffect(() => {
-    if (!p5Canvas.current && canvasRef.current) {
-      p5Canvas.current = new p5(sketch);
+    if (!effectRef.current) {
+      effectRef.current = new Effect(
+        window.innerWidth,
+        window.innerHeight,
+        false
+      );
     }
 
-    // Clean up the sketch when the component unmounts
-    return () => {
-      p5Canvas.current?.remove();
-    };
-  }, []);
-
-  // hook for window resizing
-  useEffect(() => {
-    // add window resize event listener
-    window.addEventListener("resize", handleResize);
-
-    // remove event listener on cleanup
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if (!p5Canvas.current && canvasRef.current) {
+      p5Canvas.current = new p5((p: p5) => {
+        p.setup = () => {
+          p.createCanvas(window.innerWidth, window.innerHeight).parent(
+            canvasRef.current!
+          );
+          p.background(0);
+          effectRef.current!.init();
+        };
+        p.draw = () => {
+          effectRef.current!.render(p);
+        };
+      });
+    }
   }, []);
 
   return <div ref={canvasRef} id={id}></div>;
