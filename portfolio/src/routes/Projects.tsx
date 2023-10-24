@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import { motion as m } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
+import Card from "react-bootstrap/Card";
 import ProjectCard from "../components/ProjectCard";
 import ProjectPage from "../components/ProjectPage";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
@@ -18,21 +19,21 @@ export const Iris_Classifier_Proj = () => {
 const Projects = () => {
   return (
     <m.div
-      className="m-0 p-0"
+      className="m-0 p-5 w-100 h-100 flex"
       key={location.pathname}
       initial={{ opacity: 0, x: -100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
     >
-      <Container className="p-4" fluid>
+      <Container fluid as={Card}>
         <Row>
           <Col>
             <h1 className="pb-3">featured projects</h1>
           </Col>
           <Col>
             <Nav.Link as={NavLink} to="/" className="text-end">
-              back to home
+              home
               <FontAwesomeIcon icon={faHouse} className="ms-2" />
             </Nav.Link>
           </Col>

@@ -30,27 +30,19 @@ const ProjectCard = ({
         <Card.Body>{description}</Card.Body>
         <Card.Footer>
           <Row>
-            <Col>
-              <Nav className="justify-content-end align-items-center" as="ul">
-                <Nav.Item>
-                  <p className="my-auto">View project:</p>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={NavLink} to={path}>
-                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                  </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link href={pdf_link}>
-                    <FontAwesomeIcon icon={faFilePdf} />
-                  </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link href={github_link}>
-                    <FontAwesomeIcon icon={faGithub} />
-                  </Nav.Link>
-                </Nav.Item>
-              </Nav>
+            <Col className="p-0">
+              <p className="my-auto">View project:</p>
+            </Col>
+            <Col className="p-0 text-end">
+              <Nav.Link as={NavLink} to={path} className="d-inline">
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+              </Nav.Link>
+              <Nav.Link href={pdf_link} className="d-inline ms-3">
+                <FontAwesomeIcon icon={faFilePdf} />
+              </Nav.Link>
+              <Nav.Link href={github_link} className="d-inline ms-3">
+                <FontAwesomeIcon icon={faGithub} />
+              </Nav.Link>
             </Col>
           </Row>
         </Card.Footer>

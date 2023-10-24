@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import Flowfield from "./components/Flowfield";
 
 import "./assets/scss/App.scss";
 import { AnimatePresence } from "framer-motion";
@@ -8,6 +7,7 @@ import Home from "./routes/Home";
 import About from "./routes/About";
 import Contact from "./routes/Contact";
 import Projects, { Iris_Classifier_Proj } from "./routes/Projects";
+import Flowfield from "./components/Flowfield";
 
 const App = () => {
   const location = useLocation();
@@ -25,7 +25,6 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </AnimatePresence>
-
       <Flowfield id="flow-field" />
     </>
   );

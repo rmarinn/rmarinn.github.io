@@ -14,13 +14,13 @@ body {
 }
 
 .nav-link {
-    color: violet;
+    color: #8E2CEA;
     &:hover {
-        color: whitesmoke;
+        color: #E4EB2D;
         text-decoration: underline;
     }
     &:focus {
-        color: whitesmoke;
+        color: #E4EB2D;
     }
 }
 
@@ -50,16 +50,4 @@ p, a{
     border-color: white;
     border-width: 3px;
     padding: 10px;
-}
-
-.bg-red {
-    background-color: red;
-}
-
-.bg-blue {
-    background-color: blue;
-}
-
-.bg-yellow {
-    background-color: yellow;
 }

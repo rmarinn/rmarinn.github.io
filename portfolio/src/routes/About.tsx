@@ -30,10 +30,9 @@ const About = () => {
             mechanisms through the tools of science and technology. My journey
             through the world of programming has been an exciting one, as I've
             had the opportunity to work with various programming languages and
-            harness the power of frameworks to bring my projects to life. Among
-            the myriad of languages, Python has captured my heart, and I find
-            myself most at home when crafting solutions with its versatile
-            tools.
+            frameworks to bring my projects to life. Among the myriad of
+            languages, and I find myself most at home when working with Python
+            and its versatile tools and packages.
           </p>
           <p>
             What truly fuels my curiosity and enthusiasm are projects that delve

@@ -29,7 +29,7 @@ const Home = () => {
             as={Container}
           >
             <Col md={4}>
-              <Stack as={Card} id="title-card" className="pt-2">
+              <Stack as={Card} id="title-card" className="py-4 px-5">
                 <h1>Richard Marin</h1>
                 <p>Data Analytics • Programming • Research</p>
                 <Nav className="justify-content-center">
