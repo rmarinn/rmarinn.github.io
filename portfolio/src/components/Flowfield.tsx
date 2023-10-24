@@ -77,7 +77,7 @@ class Effect {
   width: number;
   height: number;
   particles: Particle[];
-  numberOfParticles: number = 150;
+  numberOfParticles: number = 80;
   cellSize: number = 10;
   rows: number;
   cols: number;
@@ -110,7 +110,6 @@ class Effect {
         this.flowField.push(angle);
       }
     }
-    console.log(`${this.rows}, ${this.cols}, ${this.flowField.length}`);
   }
 
   private initParticles() {
@@ -147,20 +146,27 @@ class Effect {
       p.line(0, ypos, this.width, ypos);
     }
   }
-
-  public resize() {
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
-    // this.p.resizeCanvas(this.width, this.height);
-    // this.initFlowField();
-    console.log();
-  }
 }
 
 const Flowfield = ({ id }: { id: string }) => {
   const canvasRef = useRef<HTMLDivElement | null>(null);
   const effectRef = useRef<Effect | null>(null);
   const p5Canvas = useRef<p5 | null>(null);
+
+  const handleResize = () => {
+    if (p5Canvas.current) {
+      const p = p5Canvas.current;
+      p.resizeCanvas(window.innerWidth, window.innerHeight);
+    }
+
+    if (effectRef.current) {
+      const effect = effectRef.current;
+      effect.width = window.innerWidth;
+      effect.height = window.innerHeight;
+      effect.init();
+    }
+    console.log("resize");
+  };
 
   useEffect(() => {
     if (!effectRef.current) {
@@ -185,6 +191,12 @@ const Flowfield = ({ id }: { id: string }) => {
         };
       });
     }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return <div ref={canvasRef} id={id}></div>;
