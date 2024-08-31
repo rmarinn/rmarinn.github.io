@@ -54,11 +54,11 @@
 			padding: 2rem;
 			gap: 1.5rem;
 			text-align: center;
-			font-size: 1.5rem;
+			font-size: 2rem;
 
 			a {
-				color: $text;
-				font-size: 2rem;
+				color: $background;
+				font-size: 1.5rem;
 				padding: 1rem;
 				background-color: $accent;
 				border-radius: 0.25rem;
