@@ -1,0 +1,33 @@
+@import "fonts";
+@import "breakpoints";
+@import "colors";
+
+* {
+  margin: 0;
+}
+
+:root {
+  margin: 0;
+  font-family: $font-secondary;
+  color: $text;
+  background-color: $background;
+}
+
+h1 {
+  font-family: $font-jumbo;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-primary;
+  margin: 0;
+}
+
+h4,
+h5,
+h6 {
+  letter-spacing: 0.1rem;
+}

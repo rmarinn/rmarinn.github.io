@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Bayon";
+  src: url("$lib/fonts/Bayon/Bayon-Regular.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Alata";
+  src: url("$lib/fonts/Alata/Alata-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("$lib/fonts/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Righteous";
+  src: url("$lib/fonts/Righteous/Righteous-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Museo Moderno";
+  src: url("$lib/fonts/MuseoModerno/MuseoModerno-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Museo Moderno";
+  src: url("$lib/fonts/MuseoModerno/MuseoModerno-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+$font-jumbo: "Bayon", sans-serif;
+$font-primary: "Alata", sans-serif;
+$font-secondary: "Noto Sans", sans-serif;
+$font-lockkey: "Righteous", sans-serif;
+$font-quick-rtc: "Museo Moderno", sans-serif;
+
+
+.lockkey {
+  font-family: $font-lockkey;
+  letter-spacing: 0.15rem;
+  font-weight: 800;
+}
+
+.quick-rtc {
+
+  :nth-child(1) {
+    font-family: $font-quick-rtc;
+    font-style: italic;
+    letter-spacing: 0.15rem;
+  }
+
+  :nth-child(2) {
+    font-family: $font-quick-rtc;
+    font-style: normal;
+    letter-spacing: 0.1rem;
+  }
+}
