@@ -1,33 +1,41 @@
 @font-face {
   font-family: "Bayon";
-  src: url("$lib/fonts/Bayon/Bayon-Regular.ttf") format("truetype");
+  src: url("../fonts/Bayon/Bayon-Regular.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Alata";
-  src: url("$lib/fonts/Alata/Alata-Regular.ttf") format("truetype");
+  src: url("../fonts/Alata/Alata-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Noto Sans";
-  src: url("$lib/fonts/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("../fonts/Noto_Sans/NotoSans-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/Noto_Sans/NotoSans-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
   font-family: "Righteous";
-  src: url("$lib/fonts/Righteous/Righteous-Regular.ttf") format("truetype");
+  src: url("../fonts/Righteous/Righteous-Regular.woff2") format("woff2");
   font-style: normal;
 }
 
 @font-face {
   font-family: "Museo Moderno";
-  src: url("$lib/fonts/MuseoModerno/MuseoModerno-VariableFont_wght.ttf") format("truetype");
+  src: url("../fonts/MuseoModerno/MuseoModerno-Thin.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -35,7 +43,7 @@
 
 @font-face {
   font-family: "Museo Moderno";
-  src: url("$lib/fonts/MuseoModerno/MuseoModerno-Italic-VariableFont_wght.ttf") format("truetype");
+  src: url("../fonts/MuseoModerno/MuseoModerno-ThinItalic.woff2") format("woff2");
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
