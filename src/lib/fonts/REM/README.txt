@@ -1,36 +1,36 @@
-MuseoModerno Variable Font
-==========================
+REM Variable Font
+=================
 
-This download contains MuseoModerno as both variable fonts and static fonts.
+This download contains REM as both variable fonts and static fonts.
 
-MuseoModerno is a variable font with this axis:
+REM is a variable font with this axis:
   wght
 
 This means all the styles are contained in these files:
-  MuseoModerno-VariableFont_wght.ttf
-  MuseoModerno-Italic-VariableFont_wght.ttf
+  REM-VariableFont_wght.ttf
+  REM-Italic-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for MuseoModerno:
-  static/MuseoModerno-Thin.ttf
-  static/MuseoModerno-ExtraLight.ttf
-  static/MuseoModerno-Light.ttf
-  static/MuseoModerno-Regular.ttf
-  static/MuseoModerno-Medium.ttf
-  static/MuseoModerno-SemiBold.ttf
-  static/MuseoModerno-Bold.ttf
-  static/MuseoModerno-ExtraBold.ttf
-  static/MuseoModerno-Black.ttf
-  static/MuseoModerno-ThinItalic.ttf
-  static/MuseoModerno-ExtraLightItalic.ttf
-  static/MuseoModerno-LightItalic.ttf
-  static/MuseoModerno-Italic.ttf
-  static/MuseoModerno-MediumItalic.ttf
-  static/MuseoModerno-SemiBoldItalic.ttf
-  static/MuseoModerno-BoldItalic.ttf
-  static/MuseoModerno-ExtraBoldItalic.ttf
-  static/MuseoModerno-BlackItalic.ttf
+in those cases you can use the static font files for REM:
+  static/REM-Thin.ttf
+  static/REM-ExtraLight.ttf
+  static/REM-Light.ttf
+  static/REM-Regular.ttf
+  static/REM-Medium.ttf
+  static/REM-SemiBold.ttf
+  static/REM-Bold.ttf
+  static/REM-ExtraBold.ttf
+  static/REM-Black.ttf
+  static/REM-ThinItalic.ttf
+  static/REM-ExtraLightItalic.ttf
+  static/REM-LightItalic.ttf
+  static/REM-Italic.ttf
+  static/REM-MediumItalic.ttf
+  static/REM-SemiBoldItalic.ttf
+  static/REM-BoldItalic.ttf
+  static/REM-ExtraBoldItalic.ttf
+  static/REM-BlackItalic.ttf
 
 Get started
 -----------

@@ -4,8 +4,8 @@
 		<a href="/lockkey" class="card">
 			<h3 class="lockkey">Lockkey</h3>
 		</a>
-		<a href="/quick-rtc" class="card">
-			<h3 class="quick-rtc"><span>Quick</span><span>RTC</span></h3>
+		<a href="/repeater" class="card">
+			<h3 class="repeater">REPEATER</h3>
 		</a>
 	</div>
 </div>

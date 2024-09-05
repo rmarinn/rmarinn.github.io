@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Bayon";
   src: url("../fonts/Bayon/Bayon-Regular.woff2") format("woff2");
-  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
@@ -34,26 +33,18 @@
 }
 
 @font-face {
-  font-family: "Museo Moderno";
-  src: url("../fonts/MuseoModerno/MuseoModerno-Thin.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Museo Moderno";
-  src: url("../fonts/MuseoModerno/MuseoModerno-ThinItalic.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: 'REM';
+  src: url('../fonts/REM/REM-MediumItalic.woff2') format('woff2');
   font-style: italic;
   font-display: swap;
 }
+
 
 $font-jumbo: "Bayon", sans-serif;
 $font-primary: "Alata", sans-serif;
 $font-secondary: "Noto Sans", sans-serif;
 $font-lockkey: "Righteous", sans-serif;
-$font-quick-rtc: "Museo Moderno", sans-serif;
+$font-repeater: "REM", sans-serif;
 
 
 .lockkey {
@@ -62,17 +53,9 @@ $font-quick-rtc: "Museo Moderno", sans-serif;
   font-weight: 800;
 }
 
-.quick-rtc {
-
-  :nth-child(1) {
-    font-family: $font-quick-rtc;
-    font-style: italic;
-    letter-spacing: 0.15rem;
-  }
-
-  :nth-child(2) {
-    font-family: $font-quick-rtc;
-    font-style: normal;
-    letter-spacing: 0.1rem;
-  }
+.repeater {
+  font-family: $font-repeater;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.05rem;
 }
