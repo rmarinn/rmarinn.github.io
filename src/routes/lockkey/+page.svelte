@@ -4,15 +4,20 @@
 </script>
 
 <main>
-	<section>
+	<header>
 		<h1 class="lockkey">Lockkey</h1>
+		<nav>
+			<a href="/" class="home-link"
+				>Home <span class="icon-home"></span></a
+			>
+		</nav>
+	</header>
+
+	<section>
 		<p>
 			Lockkey is a simple and secure secrets manager designed for storing
 			passwords and text with ease.
 		</p>
-	</section>
-
-	<section>
 		<div class="project-media">
 			<img src={lockkey_img} alt="Login page of Lockkey" />
 			<a
@@ -21,7 +26,7 @@
 				rel="noopener"
 				title="View the Lockkey project on GitHub"
 				class="github-link"
-				>View project on GitHub <span class="github-icon"></span>
+				>View project on GitHub <span class="icon-github"></span>
 			</a>
 		</div>
 	</section>
@@ -201,7 +206,7 @@
 			align-items: center;
 			gap: 0.2rem;
 
-			.github-icon {
+			.icon-github {
 				display: inline-block;
 				width: 1.5rem;
 				height: 1.5rem;
@@ -214,6 +219,34 @@
 				-webkit-mask-repeat: no-repeat;
 				-webkit-mask-size: 100% 100%;
 			}
+		}
+	}
+
+	header {
+		display: flex;
+		h1 {
+			flex-grow: 1;
+		}
+	}
+
+	.home-link {
+		color: $accent;
+		display: flex;
+		align-items: center;
+		gap: 0.2rem;
+
+		.icon-home {
+			display: inline-block;
+			width: 1.5rem;
+			height: 1.5rem;
+			background-color: currentColor;
+			--svg: url("$lib/imgs/mdi-home.svg");
+			mask-image: var(--svg);
+			mask-repeat: no-repeat;
+			mask-size: 100% 100%;
+			-webkit-mask-image: var(--svg);
+			-webkit-mask-repeat: no-repeat;
+			-webkit-mask-size: 100% 100%;
 		}
 	}
 </style>
