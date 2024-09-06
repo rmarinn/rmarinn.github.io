@@ -3,6 +3,28 @@
 	import lockkey_img from "$lib/imgs/lockkey_login.webp";
 </script>
 
+<svelte:head>
+	<title>Lockkey - Secure Secrets Manager</title>
+	<meta
+		name="description"
+		content="Lockkey is a minimal, secure secrets manager for storing passwords and text, featuring offline access, encryption, and a random password generator."
+	/>
+	<meta
+		name="keywords"
+		content="Lockkey, secrets manager, password manager, encryption, Rust, Svelte, secure storage, password generator"
+	/>
+	<meta name="author" content="Richard Marin" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Lockkey - Secure Secrets Manager" />
+	<meta
+		property="og:description"
+		content="A minimal, secure secrets manager that lets you store passwords and text with ease."
+	/>
+	<meta property="og:image" content={lockkey_img} />
+	<meta property="og:url" content="https://rmarinn.github.io/lockkey" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <main>
 	<header>
 		<h1 class="lockkey">Lockkey</h1>
