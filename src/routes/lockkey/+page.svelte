@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Footer from "../Footer.svelte";
+	import lockkey_img from "$lib/imgs/lockkey_login.webp";
 </script>
 
 <main>
@@ -13,13 +14,15 @@
 
 	<section>
 		<div class="project-media">
-			<img src="path-to-screenshot.png" alt="Demo of Lockkey" />
+			<img src={lockkey_img} alt="Login page of Lockkey" />
 			<a
 				href="https://github.com/rmarinn/lockkey"
 				target="_blank"
 				rel="noopener"
-				title="View the Lockkey project on GitHub">View on GitHub</a
-			>
+				title="View the Lockkey project on GitHub"
+				class="github-link"
+				>View project on GitHub <span class="github-icon"></span>
+			</a>
 		</div>
 	</section>
 
@@ -147,6 +150,12 @@
 <Footer />
 
 <style lang="scss">
+	@import "$lib/styles/colors";
+
+	h1 {
+		font-size: 2rem;
+	}
+
 	h2,
 	h3 {
 		letter-spacing: 0.18rem;
@@ -172,5 +181,39 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+	}
+
+	.project-media {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.2rem;
+
+		img {
+			width: 80%;
+		}
+
+		.github-link {
+			width: 80%;
+			color: $accent;
+			display: flex;
+			justify-content: end;
+			align-items: center;
+			gap: 0.2rem;
+
+			.github-icon {
+				display: inline-block;
+				width: 1.5rem;
+				height: 1.5rem;
+				background-color: currentColor;
+				--svg: url("$lib/imgs/mdi-github.svg");
+				mask-image: var(--svg);
+				mask-repeat: no-repeat;
+				mask-size: 100% 100%;
+				-webkit-mask-image: var(--svg);
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-size: 100% 100%;
+			}
+		}
 	}
 </style>
