@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /_app/
+Allow: /
+
+Sitemap: https://rmarinn.github.io/sitemap.xml
