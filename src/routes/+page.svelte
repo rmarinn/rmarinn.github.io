@@ -1,8 +1,29 @@
 <script lang="ts">
-	import Hero from './Hero.svelte';
-	import Projects from './Projects.svelte';
-	import Footer from './Footer.svelte';
+	import Hero from "./Hero.svelte";
+	import Projects from "./Projects.svelte";
+	import Footer from "./Footer.svelte";
 </script>
+
+<head>
+	<title>Richard Marin - Developer Portfolio</title>
+	<meta
+		name="description"
+		content="Hi, I'm Richard Marin, a developer building desktop and web applications. Explore my projects like Lockkey and Repeater. Let's make your concept a reality."
+	/>
+	<meta
+		name="keywords"
+		content="Richard Marin, developer portfolio, Rust, Svelte, web applications, desktop applications, Lockkey, Repeater"
+	/>
+	<meta name="author" content="Richard Marin" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Richard Marin - Developer Portfolio" />
+	<meta
+		property="og:description"
+		content="I'm Richard Marin, a developer specializing in desktop and web applications. Check out my projects Lockkey and Repeater."
+	/>
+	<meta property="og:url" content="https://rmarinn.github.io/" />
+	<meta name="twitter:card" content="summary_large_image" />
+</head>
 
 <main class="sections">
 	<section id="hero">
@@ -24,7 +45,7 @@
 <Footer />
 
 <style lang="scss">
-	@import '$lib/styles/colors';
+	@import "$lib/styles/colors";
 
 	.sections {
 		padding: 2rem;

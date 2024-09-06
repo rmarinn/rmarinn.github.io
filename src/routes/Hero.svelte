@@ -6,15 +6,16 @@
 	</div>
 	<div class="right">
 		<p>Have a concept?</p>
-		<a href="mailto:richard.marin529@protonmail.com?subject=Hello%20there!" title="Send an email"
-			>Let's make it happen</a
+		<a
+			href="mailto:richard.marin529@protonmail.com?subject=Hello%20there!"
+			title="Send an email">Let's make it happen</a
 		>
 	</div>
 </div>
 
 <style lang="scss">
-	@import '$lib/styles/fonts';
-	@import '$lib/styles/colors';
+	@import "$lib/styles/fonts";
+	@import "$lib/styles/colors";
 
 	.container {
 		display: flex;
