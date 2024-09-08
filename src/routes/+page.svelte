@@ -35,9 +35,7 @@
 		<Projects />
 	</section>
 
-	<section id="about">
-		<About />
-	</section>
+	<About />
 </main>
 
 <Footer />
@@ -53,7 +51,7 @@
 		align-items: center;
 	}
 
-	section {
+	:global(section) {
 		box-sizing: border-box;
 		width: 100%;
 	}
@@ -67,13 +65,5 @@
 
 	#projects {
 		min-height: 60vh;
-	}
-
-	#about {
-		width: 70%;
-		min-height: 80vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
 	}
 </style>

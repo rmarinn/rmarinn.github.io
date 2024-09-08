@@ -43,6 +43,7 @@
 <style lang="scss">
 	@import "$lib/styles/colors";
 	@import "$lib/styles/fonts";
+	@import "$lib/styles/breakpoints";
 
 	footer {
 		min-height: 12rem;
@@ -69,6 +70,10 @@
 				display: flex;
 				gap: 0.5rem;
 				padding: 0;
+
+				@media (max-width: $media-sm) {
+					flex-direction: column;
+				}
 
 				a {
 					display: inline-flex;

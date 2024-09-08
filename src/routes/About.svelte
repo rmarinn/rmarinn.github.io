@@ -2,9 +2,9 @@
 	import profileImg from "$lib/imgs/pfp.webp";
 </script>
 
-<div class="container">
-	<div class="left">
-		<h2>About me</h2>
+<section id="about">
+	<div class="about-desc">
+		<h2 id="header-md">About me</h2>
 		<p>
 			Hi! I’m Richard Marin, a software developer with a love for solving
 			problems through code. My programming journey began in a school club,
@@ -35,30 +35,66 @@
 			>
 		</p>
 	</div>
-	<div class="right">
+	<div class="profile-img">
 		<img src={profileImg} alt="Profile" />
 	</div>
-</div>
+	<h2 id="header-sm">About me</h2>
+</section>
 
 <style lang="scss">
 	@import "$lib/styles/colors";
+	@import "$lib/styles/breakpoints";
 
-	.container {
+	section#about {
+		width: 70%;
+		min-height: 80vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 8rem;
 		padding: 2rem;
+		gap: 4rem;
 
-		.left {
-			flex-grow: 1;
+		#header-sm {
+			display: none;
 		}
 
-		.right {
-			img {
-				width: 28rem;
-				box-shadow: 0px 0px 2px 0px rgba($accent, 0.9);
+		@media (max-width: $media-lg) {
+			gap: 1rem;
+			padding: 1rem;
+			width: 100%;
+
+			#header-sm {
+				display: inline;
 			}
+			#header-md {
+				display: none;
+			}
+		}
+
+		.about-desc {
+			flex-grow: 1;
+
+			@media (max-width: $media-lg) {
+				width: 100%;
+			}
+		}
+
+		.profile-img {
+			display: flex;
+			justify-content: center;
+
+			img {
+				width: 100%;
+				box-shadow: 0px 0px 2px 0px rgba($accent, 0.9);
+
+				@media (max-width: $media-lg) {
+					width: 50%;
+				}
+			}
+		}
+
+		@media (max-width: $media-lg) {
+			flex-direction: column-reverse;
 		}
 	}
 

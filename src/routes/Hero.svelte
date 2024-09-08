@@ -16,13 +16,20 @@
 <style lang="scss">
 	@import "$lib/styles/fonts";
 	@import "$lib/styles/colors";
+	@import "$lib/styles/breakpoints";
 
 	.container {
 		display: flex;
 		justify-content: center;
+		gap: 8rem;
 		width: 50%;
 		margin: auto;
-		gap: 8rem;
+
+		@media (max-width: $media-md) {
+			justify-content: space-between;
+			width: 80%;
+			gap: 2rem;
+		}
 
 		.left {
 			display: flex;
@@ -33,6 +40,11 @@
 			height: 100%;
 			gap: 0.05rem;
 
+			@media (max-width: $media-sm) {
+				text-align: center;
+				align-items: center;
+			}
+
 			.name {
 				color: $accent;
 				font-size: 6.5rem;
@@ -41,10 +53,19 @@
 				margin: 0;
 				font-weight: 800;
 				font-family: $font-jumbo;
+
+				@media (max-width: $media-md) {
+					font-size: 4.5rem;
+					line-height: 3.8rem;
+				}
 			}
 
 			p {
 				font-size: 2rem;
+
+				@media (max-width: $media-md) {
+					font-size: 1rem;
+				}
 			}
 		}
 
@@ -59,9 +80,14 @@
 			text-align: center;
 			font-size: 2rem;
 
+			@media (max-width: $media-md) {
+				font-size: 1.25rem;
+			}
+
 			a {
 				color: $background;
 				font-size: 1.5rem;
+				margin: 0 auto;
 				padding: 1rem;
 				background-color: $accent;
 				border-radius: 0.25rem;
@@ -75,7 +101,16 @@
 					transform: translateY(-0.25rem);
 					box-shadow: 0 0.25rem 8rem 0 rgba($accent, 0.5);
 				}
+
+				@media (max-width: $media-md) {
+					padding: 0.5rem;
+					font-size: 1rem;
+				}
 			}
+		}
+
+		@media (max-width: $media-sm) {
+			flex-direction: column;
 		}
 	}
 </style>
