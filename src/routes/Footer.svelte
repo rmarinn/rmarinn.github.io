@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from "$app/stores";
 	import Icon from "@iconify/svelte";
 </script>
 
@@ -19,21 +20,22 @@
 					href="https://github.com/rmarinn"
 					target="_blank"
 					rel="noopener"
-					title="View the Lockkey project on GitHub"
+					title="View my GitHub profile"
 					><Icon icon="mdi:github" width="1.5rem" height="1.5rem" /> GitHub
 				</a>
 			</li>
 		</ul>
 	</div>
-	<div class="middle"></div>
 	<div class="right">
-		<a href="#hero" class="link-with-icon"
-			>Back to Top <Icon
-				icon="mdi:arrow-up"
-				width="1.5rem"
-				height="1.5rem"
-			/></a
-		>
+		{#if $page.url.pathname === "/"}
+			<a href="#hero" class="link-with-icon"
+				>Back to Top <Icon
+					icon="mdi:arrow-up"
+					width="1.5rem"
+					height="1.5rem"
+				/></a
+			>
+		{/if}
 		<p><i>Made with Svelte, lots of scss, and love.</i></p>
 	</div>
 </footer>
@@ -82,11 +84,6 @@
 					}
 				}
 			}
-		}
-
-		.middle {
-			width: 50%;
-			text-align: center;
 		}
 
 		.right {
