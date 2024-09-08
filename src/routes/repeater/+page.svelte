@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import Icon from "@iconify/svelte";
 	import Footer from "../Footer.svelte";
 
 	import hljs from "highlight.js/lib/core";
@@ -40,15 +41,22 @@
 	<header>
 		<h1 class="repeater">REPEATER</h1>
 		<nav>
-			<a href="/" class="home-link">Home <span class="icon-home"></span></a>
+			<a href="/" class="home-link"
+				>Home <Icon
+					icon="mdi:home"
+					width="1.5rem"
+					height="1.5rem"
+				/></a
+			>
 		</nav>
 	</header>
 
 	<section>
 		<p>
-			Repeater is a versatile Rust library designed for building real-time
-			applications. Whether you're creating a chat app, a collaborative tool, or
-			any system that needs real-time communication, Repeater provides the
+			Repeater is a versatile Rust library designed for
+			building real-time applications. Whether you're creating
+			a chat app, a collaborative tool, or any system that
+			needs real-time communication, Repeater provides the
 			building blocks to get started quickly.
 		</p>
 	</section>
@@ -57,28 +65,32 @@
 		<h2>Features</h2>
 		<ul class="project-features">
 			<li>
-				<strong>WebSocket Communication</strong>: Efficiently handle multiple
-				WebSocket connections.
+				<strong>WebSocket Communication</strong>:
+				Efficiently handle multiple WebSocket
+				connections.
 			</li>
 			<li>
-				<strong>Command-Based Architecture</strong>: Extendable command system
-				for processing various message types.
+				<strong>Command-Based Architecture</strong>:
+				Extendable command system for processing various
+				message types.
 			</li>
 			<li>
-				<strong>Client Management</strong>: Simplified management of client
-				connections and message routing.
+				<strong>Client Management</strong>: Simplified
+				management of client connections and message
+				routing.
 			</li>
 			<li>
-				<strong>Modular Design</strong>: Easily customizable and scalable with
-				its organized structure.
+				<strong>Modular Design</strong>: Easily
+				customizable and scalable with its organized
+				structure.
 			</li>
 			<li>
-				<strong>Zero Deadlocks</strong>: Extensively uses message passing to
-				avoid deadlocks.
+				<strong>Zero Deadlocks</strong>: Extensively
+				uses message passing to avoid deadlocks.
 			</li>
 			<li>
-				<strong>Tokio Runtime</strong>: High performance and scalability using
-				Tokio’s async runtime.
+				<strong>Tokio Runtime</strong>: High performance
+				and scalability using Tokio’s async runtime.
 			</li>
 		</ul>
 	</section>
@@ -107,7 +119,11 @@ async fn main() {
 			rel="noopener"
 			title="View the Repeater project on GitHub"
 			class="github-link"
-			>View project on GitHub <span class="icon-github"></span>
+			>View project on GitHub <Icon
+				icon="mdi:github"
+				width="1.5rem"
+				height="1.5rem"
+			/>
 		</a>
 	</section>
 </main>
@@ -155,20 +171,6 @@ async fn main() {
 		justify-content: start;
 		align-items: center;
 		gap: 0.2rem;
-
-		.icon-github {
-			display: inline-block;
-			width: 1.5rem;
-			height: 1.5rem;
-			background-color: currentColor;
-			--svg: url("$lib/imgs/mdi-github.svg");
-			mask-image: var(--svg);
-			mask-repeat: no-repeat;
-			mask-size: 100% 100%;
-			-webkit-mask-image: var(--svg);
-			-webkit-mask-repeat: no-repeat;
-			-webkit-mask-size: 100% 100%;
-		}
 	}
 
 	header {
@@ -183,20 +185,6 @@ async fn main() {
 		display: flex;
 		align-items: center;
 		gap: 0.2rem;
-
-		.icon-home {
-			display: inline-block;
-			width: 1.5rem;
-			height: 1.5rem;
-			background-color: currentColor;
-			--svg: url("$lib/imgs/mdi-home.svg");
-			mask-image: var(--svg);
-			mask-repeat: no-repeat;
-			mask-size: 100% 100%;
-			-webkit-mask-image: var(--svg);
-			-webkit-mask-repeat: no-repeat;
-			-webkit-mask-size: 100% 100%;
-		}
 	}
 
 	code {

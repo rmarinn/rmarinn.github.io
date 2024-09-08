@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Footer from "../Footer.svelte";
+	import Icon from "@iconify/svelte";
 	import lockkeyImg from "$lib/imgs/lockkey_login.webp";
 </script>
 
@@ -29,7 +30,9 @@
 	<header>
 		<h1 class="lockkey">Lockkey</h1>
 		<nav>
-			<a href="/" class="home-link">Home <span class="icon-home"></span></a>
+			<a href="/" class="home-link"
+				>Home <Icon icon="mdi:home" width="1.5rem" height="1.5rem" /></a
+			>
 		</nav>
 	</header>
 
@@ -46,7 +49,11 @@
 				rel="noopener"
 				title="View the Lockkey project on GitHub"
 				class="github-link"
-				>View project on GitHub <span class="icon-github"></span>
+				>View project on GitHub <Icon
+					icon="mdi:github"
+					width="1.5rem"
+					height="1.5rem"
+				/>
 			</a>
 		</div>
 	</section>
@@ -217,20 +224,6 @@
 			justify-content: end;
 			align-items: center;
 			gap: 0.2rem;
-
-			.icon-github {
-				display: inline-block;
-				width: 1.5rem;
-				height: 1.5rem;
-				background-color: currentColor;
-				--svg: url("$lib/imgs/mdi-github.svg");
-				mask-image: var(--svg);
-				mask-repeat: no-repeat;
-				mask-size: 100% 100%;
-				-webkit-mask-image: var(--svg);
-				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-size: 100% 100%;
-			}
 		}
 	}
 
@@ -246,19 +239,5 @@
 		display: flex;
 		align-items: center;
 		gap: 0.2rem;
-
-		.icon-home {
-			display: inline-block;
-			width: 1.5rem;
-			height: 1.5rem;
-			background-color: currentColor;
-			--svg: url("$lib/imgs/mdi-home.svg");
-			mask-image: var(--svg);
-			mask-repeat: no-repeat;
-			mask-size: 100% 100%;
-			-webkit-mask-image: var(--svg);
-			-webkit-mask-repeat: no-repeat;
-			-webkit-mask-size: 100% 100%;
-		}
 	}
 </style>
