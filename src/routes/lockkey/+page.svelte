@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Footer from "../Footer.svelte";
-	import lockkey_img from "$lib/imgs/lockkey_login.webp";
+	import lockkeyImg from "$lib/imgs/lockkey_login.webp";
 </script>
 
 <svelte:head>
@@ -20,7 +20,7 @@
 		property="og:description"
 		content="A minimal, secure secrets manager that lets you store passwords and text with ease."
 	/>
-	<meta property="og:image" content={lockkey_img} />
+	<meta property="og:image" content={lockkeyImg} />
 	<meta property="og:url" content="https://rmarinn.github.io/lockkey" />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
@@ -39,7 +39,7 @@
 			passwords and text with ease.
 		</p>
 		<div class="project-media">
-			<img src={lockkey_img} alt="Login page of Lockkey" />
+			<img src={lockkeyImg} alt="Login page of Lockkey" />
 			<a
 				href="https://github.com/rmarinn/lockkey"
 				target="_blank"

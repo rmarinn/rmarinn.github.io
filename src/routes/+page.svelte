@@ -2,6 +2,7 @@
 	import Hero from "./Hero.svelte";
 	import Projects from "./Projects.svelte";
 	import Footer from "./Footer.svelte";
+	import About from "./About.svelte";
 </script>
 
 <head>
@@ -35,10 +36,7 @@
 	</section>
 
 	<section id="about">
-		<div>
-			<h2>About me</h2>
-			<p>This is the about section...</p>
-		</div>
+		<About />
 	</section>
 </main>
 
@@ -72,15 +70,9 @@
 	}
 
 	#about {
-		min-height: 50vh;
+		min-height: 80vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-
-		div {
-			text-align: center;
-			border: solid 2px $primary;
-			padding: 2rem;
-		}
 	}
 </style>

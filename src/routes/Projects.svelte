@@ -11,8 +11,8 @@
 </div>
 
 <style lang="scss">
-	@import '$lib/styles/colors';
-	@import '$lib/styles/fonts';
+	@import "$lib/styles/colors";
+	@import "$lib/styles/fonts";
 
 	.outer-container {
 		display: flex;
@@ -30,8 +30,8 @@
 			.card {
 				border: solid 2px $primary;
 				padding: 1rem;
-				min-width: 24rem;
-				min-height: 24rem;
+				width: 24rem;
+				height: 24rem;
 				display: flex;
 				justify-content: center;
 				align-items: center;
