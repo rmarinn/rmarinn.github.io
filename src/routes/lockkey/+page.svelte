@@ -29,9 +29,7 @@
 	<header>
 		<h1 class="lockkey">Lockkey</h1>
 		<nav>
-			<a href="/" class="home-link"
-				>Home <span class="icon-home"></span></a
-			>
+			<a href="/" class="home-link">Home <span class="icon-home"></span></a>
 		</nav>
 	</header>
 
@@ -58,9 +56,8 @@
 		<p>
 			Lockkey is a lightweight <em>secrets</em> manager focused on
 			<strong>security</strong>
-			and <strong>portability</strong>. It securely stores passwords and
-			plain text by deriving an encryption key from your master password
-			using
+			and <strong>portability</strong>. It securely stores passwords and plain
+			text by deriving an encryption key from your master password using
 			<a
 				href="https://en.wikipedia.org/wiki/Argon2"
 				title="Learn more about Argon2"><strong>Argon2</strong></a
@@ -74,32 +71,30 @@
 		</p>
 		<ul class="project-features">
 			<li>
-				<strong>Tech Stack:</strong> Rust, Svelte, TypeScript, SCSS, Tailwind,
-				SQLite
+				<strong>Tech Stack:</strong> Rust, Svelte, TypeScript, SCSS, Tailwind, SQLite
 			</li>
 			<li>
 				<strong>Key Features:</strong>
 				<ul>
 					<li>
-						<b>Secure storage:</b> Lockkey securely stores your passwords
+						<strong>Secure storage:</strong> Lockkey securely stores your passwords
 						or text on disk using robust encryption.
 					</li>
 					<li>
-						<b>Random password generator:</b> Easily create strong, random
+						<strong>Random password generator:</strong> Easily create strong, random
 						passwords with the built-in generator.
 					</li>
 					<li>
-						<b>Clipboard functionality:</b> View your stored passwords
+						<strong>Clipboard functionality:</strong> View your stored passwords
 						or copy them to your clipboard at any time.
 					</li>
 					<li>
-						<b>Offline access & portability:</b> Simply copy your `.secrets`
+						<strong>Offline access & portability:</strong> Simply copy your `.secrets`
 						file and use it across devices.
 					</li>
 					<li>
-						<b>Automatic logout:</b> Lockkey automatically signs you
-						out after a period of inactivity, ensuring your data remains
-						secure.
+						<strong>Automatic logout:</strong> Lockkey automatically signs you out
+						after a period of inactivity, ensuring your data remains secure.
 					</li>
 				</ul>
 			</li>
@@ -110,52 +105,47 @@
 	<section>
 		<h2>Development Process</h2>
 		<p>
-			Lockkey started as a project to learn <em>Rust</em>, but soon
-			evolved into an opportunity to dive deeper into <em>Svelte</em>.
-			Despite the simplicity of the backend, Rust’s ergonomics and easy
-			unit testing sped up development. Here’s a breakdown of how I built
-			it.
+			Lockkey started as a project to learn <em>Rust</em>, but soon evolved into
+			an opportunity to dive deeper into <em>Svelte</em>. Despite the simplicity
+			of the backend, Rust’s ergonomics and easy unit testing sped up
+			development. Here’s a breakdown of how I built it.
 		</p>
 
 		<h3>The Backend</h3>
 		<p>
-			Lockkey’s backend is a simple SQLite database. The primary challenge
-			was determining the encryption methods and how to keep the master
-			password secure. To address this, Lockkey uses <strong
-				>AES-GCM</strong
-			>
+			Lockkey’s backend is a simple SQLite database. The primary challenge was
+			determining the encryption methods and how to keep the master password
+			secure. To address this, Lockkey uses <strong>AES-GCM</strong>
 			for encryption and derives an encryption key from the user’s master password
-			with <strong>Argon2</strong>, ensuring the master password is
-			cleared from memory after use.
+			with <strong>Argon2</strong>, ensuring the master password is cleared from
+			memory after use.
 		</p>
 
 		<h3>The Frontend</h3>
 		<p>
-			Building the UI was a challenge. Initially, I considered <em
-				>gtk-rs</em
-			>, but after wrestling with its complexity, I pivoted to using
+			Building the UI was a challenge. Initially, I considered <em>gtk-rs</em>,
+			but after wrestling with its complexity, I pivoted to using
 			<em>Tauri</em>
-			and <em>WebView</em> to leverage web technologies. After exploring
-			my options, I opted for <em>Svelte</em>, thanks to its excellent
+			and <em>WebView</em> to leverage web technologies. After exploring my
+			options, I opted for <em>Svelte</em>, thanks to its excellent
 			documentation and interactive learning experience.
 		</p>
 
 		<p>
-			What sold me on Svelte was how everything—scripts, HTML, and
-			styles—was contained within a single `.svelte` file. It streamlined
-			the development process, making Tailwind redundant, as local styling
-			within each component was sufficient.
+			What sold me on Svelte was how everything—scripts, HTML, and styles—was
+			contained within a single `.svelte` file. It streamlined the development
+			process, making Tailwind redundant, as local styling within each component
+			was sufficient.
 		</p>
 
 		<h2>Challenges with WebView</h2>
 		<p>
 			While Tauri’s WebView simplified UI development, it introduced some
 			limitations. Window resizing can be sluggish, and I encountered some
-			difficulty managing memory securely with JavaScript’s garbage
-			collection system, especially when trying to immediately clear
-			sensitive data. Although I experimented with zeroing out arrays,
-			this led to unexpected behavior, making it feel like a clumsy
-			workaround.
+			difficulty managing memory securely with JavaScript’s garbage collection
+			system, especially when trying to immediately clear sensitive data.
+			Although I experimented with zeroing out arrays, this led to unexpected
+			behavior, making it feel like a clumsy workaround.
 		</p>
 
 		<p>
@@ -165,11 +155,11 @@
 
 		<h2>Conclusion</h2>
 		<p>
-			Building Lockkey significantly improved my Rust skills and
-			introduced me to Svelte. While I enjoyed using Tauri, for projects
-			that require more control over memory, I’d likely choose a different
-			approach. Still, I’d gladly use Tauri for future projects that
-			prioritize ease of use and cross-platform support.
+			Building Lockkey significantly improved my Rust skills and introduced me
+			to Svelte. While I enjoyed using Tauri, for projects that require more
+			control over memory, I’d likely choose a different approach. Still, I’d
+			gladly use Tauri for future projects that prioritize ease of use and
+			cross-platform support.
 		</p>
 	</section>
 </main>
