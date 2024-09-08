@@ -14,7 +14,7 @@ const config = {
       strict: true,
     }),
     paths: {
-      base: process.argv.includes("dev") ? "" : "/rmarinn.github.io",
+      base: process.argv.includes("dev") ? "" : "",
     },
   },
 };
