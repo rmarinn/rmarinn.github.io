@@ -2,6 +2,7 @@
 	import Footer from "../Footer.svelte";
 	import Icon from "@iconify/svelte";
 	import lockkeyImg from "$lib/imgs/lockkey_login.webp";
+	import { base } from "$app/paths";
 </script>
 
 <svelte:head>
@@ -30,7 +31,7 @@
 	<header>
 		<h1 class="lockkey">Lockkey</h1>
 		<nav>
-			<a href="/" class="home-link"
+			<a href="{base}/" class="home-link"
 				>Home <Icon icon="mdi:home" width="1.5rem" height="1.5rem" /></a
 			>
 		</nav>

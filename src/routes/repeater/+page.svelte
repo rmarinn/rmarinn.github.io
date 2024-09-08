@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import { base } from "$app/paths";
 	import Icon from "@iconify/svelte";
 	import Footer from "../Footer.svelte";
 
@@ -41,7 +42,7 @@
 	<header>
 		<h1 class="repeater">REPEATER</h1>
 		<nav>
-			<a href="/" class="home-link"
+			<a href="{base}/" class="home-link"
 				>Home <Icon
 					icon="mdi:home"
 					width="1.5rem"

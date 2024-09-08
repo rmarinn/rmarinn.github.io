@@ -1,10 +1,14 @@
+<script lang="ts">
+	import { base } from "$app/paths";
+</script>
+
 <div class="outer-container">
 	<h2>My Projects</h2>
 	<div class="inner-container">
-		<a href="/lockkey" class="card">
+		<a href="{base}/lockkey" class="card">
 			<h3 class="lockkey">Lockkey</h3>
 		</a>
-		<a href="/repeater" class="card">
+		<a href="{base}/repeater" class="card">
 			<h3 class="repeater">REPEATER</h3>
 		</a>
 	</div>
