@@ -3,6 +3,7 @@
 	import Projects from "./Projects.svelte";
 	import Footer from "./Footer.svelte";
 	import About from "./About.svelte";
+	import profileImg from "$lib/imgs/pfp.webp";
 </script>
 
 <head>
@@ -22,6 +23,7 @@
 		property="og:description"
 		content="I'm Richard Marin, a developer specializing in desktop and web applications. Check out my projects Lockkey and Repeater."
 	/>
+	<meta property="og:image" content={profileImg} />
 	<meta property="og:url" content="https://rmarinn.github.io/" />
 	<meta name="twitter:card" content="summary_large_image" />
 </head>
